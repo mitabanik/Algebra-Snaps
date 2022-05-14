@@ -5,7 +5,7 @@ A beginners React project to create a real time photo sharing application using 
 ## Features
 - Google Sign In
 - GitHuB Sign In
-- Firebse Integration
+- Firebase Integration
 - Post Photos
 - Liking Photos
 - Real Time Timeline Updates
