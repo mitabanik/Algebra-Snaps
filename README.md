@@ -16,11 +16,11 @@ This project was done by following YouTuber Sonny Sangha's and freeCodeCamp.org'
 
 ## Sign In
 
-<img src= 'images/signIn.png '>
+<img src= 'public/images/signIn.png '>
 
 ## Home Page
 
-<img src= 'images/homePage.png '>
+<img src= 'public/images/homePage.png '>
 
 ## Set Up
 
