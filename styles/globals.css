@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .navBtn {
+        @apply stroke-white hidden h-6 md:inline-flex cursor-pointer hover:scale-125 duration-150 ease-out;
+    }
+
+    .btn {
+        @apply stroke-white h-7 hover:scale-125
+    }
+}
