@@ -16,7 +16,7 @@ This project was done by following YouTuber Sonny Sangha's and freeCodeCamp.org'
 
 ## Sign In
 
-<img src= 'public/images/signIn.png' height="200" weight ="300">
+<img src= 'public/images/signIn.png' height="400" weight ="600">
 
 ## Home Page
 
