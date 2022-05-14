@@ -14,6 +14,14 @@ A beginners React project to create a real time photo sharing application using 
 
 This project was done by following YouTuber Sonny Sangha's and freeCodeCamp.org's videos. Big thanks!
 
+## Sign In
+
+<img src= 'images/signIn.png '>
+
+## Home Page
+
+<img src= 'images/homePage.png '>
+
 ## Set Up
 
 After cloning the repo, you'll need to run `npm install` to install dependencies and `npm run dev` to run the web application.
