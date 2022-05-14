@@ -20,7 +20,7 @@ This project was done by following YouTuber Sonny Sangha's and freeCodeCamp.org'
 
 ## Home Page
 
-<img src= 'public/images/homePage.png '>
+<img src= 'public/images/homePage.png' height="400" weight ="600">
 
 ## Set Up
 
