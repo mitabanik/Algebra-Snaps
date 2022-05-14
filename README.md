@@ -1,6 +1,6 @@
 # Real Time Photo Sharing App
 
-A beginners React project to create a real time photo sharing application using Next.js, Tailwind CSS and Firebase. I've created this app to share amoung my students in Summer to make learning Linear Algebra more fun.
+A beginners React project to create a real time photo sharing application using Next.js, Tailwind CSS and Firebase. I've created this app to share among my students in Summer Quartar to make learning Linear Algebra more interactive and fun.
 
 ## Features
 - Google Sign In
