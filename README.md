@@ -1,23 +1,19 @@
-# Next.js + Tailwind CSS Example
+# Real Time Photo Sharing App
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+A beginners React project to create a real time photo sharing application using Next.js, Tailwind CSS and Firebase. I've created this app to share amoung my students in Summer to make learning Linear Algebra more fun.
 
-## Deploy your own
+## Features
+- Google Sign In
+- GitHuB Sign In
+- Firebse Integration
+- Post Photos
+- Liking Photos
+- Real Time Timeline Updates
+- Real Time Like Updates
+- Showing most recent posts
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+This project was done by following YouTuber Sonny Sangha's and freeCodeCamp.org's videos. Big thanks!
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+## Set Up
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app -- --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+After cloning the repo, you'll need to run `npm install` to install dependencies and `npm run dev` to run the web application.
