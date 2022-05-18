@@ -22,15 +22,15 @@ function Feed() {
   return (
     <body className="bg-purple-800">
     <main className= {`grid grid-cols-1 md:grid-cols-2 md:max-w-3xl 
-    xl:grid-cols-3 xl:max-w-6xl ml-auto ${!session 
+    xl:grid-cols-6 xl:max-w-6xl ml-auto ${!session 
       && "!grid-col-3"}`}>
-        <div className="col-span-2">
+        <div className="col-start-0 col-span-4 mr-20">
           <Posts />
         </div>
         
         {/* Mini Profile Sidebar*/}
 
-        <section className="hidden xl:inline-grid bg-slate-800 ml-10 " >
+        <div className="hidden xl:inline-grid bg-slate-800 col-start-5 col-span-2 ">
           <div className="fixed top-20 grid grid-col-1 divide-y">
           {session && (
             <MiniProfile />)}
@@ -62,7 +62,7 @@ function Feed() {
             </section>
           </div>
         </div>
-      </section>
+      </div>
     </main>
   </body>
   )

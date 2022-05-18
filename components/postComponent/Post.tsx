@@ -75,7 +75,7 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
     <img src={userImg} className='rounded-full h-10 w-10
     object-contain border p-1' alt ="" />
     <p className="flex-1 font-bold text-white pl-3">{username}</p>
-    <p className="flex text-xs text-white"> Posted 
+    <p className="flex text-xs text-slate-400"> Posted 
     <Moment className='pb-5 pl-1 pr-2' fromNow >
     {timeStamp?.toDate()}
     </Moment> 
@@ -135,7 +135,7 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
         </span>{" "}
         {comment.data().comment}
       </p>
-      <Moment fromNow className="text-xs text-white">
+      <Moment fromNow className="text-xs text-slate-400 pr-2">
       {comment.data().timeStamp?.toDate()}
       </Moment>
 
