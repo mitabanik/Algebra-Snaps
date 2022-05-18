@@ -5,12 +5,13 @@ A beginners React project to create a real time photo sharing web application us
 ## Features
 - Google Sign In
 - GitHuB Sign In
-- Firebase Integration
 - Post Photos
 - Liking Photos
+- Deleting Photos
 - Real Time Timeline Updates
 - Real Time Like Updates
-- Showing most recent posts
+- Adding Comments
+- Deleting Comments
 
 This project was done by following YouTuber Sonny Sangha's and freeCodeCamp.org's videos. Big thanks!
 
