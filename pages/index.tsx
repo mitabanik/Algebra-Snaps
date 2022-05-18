@@ -1,6 +1,6 @@
 import Header from '../components/header'
 import Feed from '../components/feed'
-import Modal from '../components/Modal'
+import Modal from '../components/postComponent/Modal'
 
 function Home()  {
   return (

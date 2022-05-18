@@ -4,8 +4,8 @@ function MiniProfile() {
   const {data : session } = useSession();
  
   return (  
-     <div className="flex items-center justify-between mt-14 ml-10">
-        <img className="rounded-full border p-[2px] w-16 h-16"
+     <div className="flex items-center justify-between ml-5 mb-5">
+        <img className="rounded-full border p-[2px] w-10 h-10"
         src={session?.user?.image}
         alt="User Image"
         />
@@ -16,7 +16,7 @@ function MiniProfile() {
         </div>
 
         <button onClick={signOut}
-           className="text-blue-400 text-sm font-semibold pr-20"> 
+           className="text-blue-400 text-sm font-semibold pr-3"> 
            Sign Out
         </button>
 

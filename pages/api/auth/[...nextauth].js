@@ -27,9 +27,7 @@ export default NextAuth ({
         }
       }
     })
-
-    
-    // ...add more providers here
+  // ...add more providers here
   ],
 
   pages: {

@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react"
 import MiniProfile from "./MiniProfile"
-import Posts from "./posts"
+import Posts from "./postComponent/posts"
 import { db } from '../firebase'
 import { useEffect, useState } from "react"
 import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore"
@@ -8,66 +8,65 @@ import Moment from 'react-moment'
 
 
 function Feed() {
-    const {data : session } = useSession()
-    const [currPosts,setPosts] = useState([])
+  const {data : session } = useSession()
+  const [currPosts,setPosts] = useState([])
 
-    useEffect (() => 
-        onSnapshot(query(collection(db,'posts'), 
-        orderBy('timeStamp','desc')
-        ),
-        (snapshot) => setPosts(snapshot.docs)),
-        [db]
-    )
+  useEffect (() => 
+    onSnapshot(query(collection(db,'posts'), 
+    orderBy('timeStamp','desc')
+    ),
+    (snapshot) => setPosts(snapshot.docs)),
+    [db]
+  )
 
-    return (
-      <body className="bg-black">
-      <main className= {`grid grid-cols-1 md:grid-cols-2 md:max-w-3xl 
-      xl:grid-cols-3 xl:max-w-4xl mx-auto ${!session 
-        && "!grid-col-1 !max-w-4xl"}`}>
-          <section className="col-span-2">
-            <Posts />
-          </section>
+  return (
+    <body className="bg-purple-800">
+    <main className= {`grid grid-cols-1 md:grid-cols-2 md:max-w-3xl 
+    xl:grid-cols-3 xl:max-w-6xl ml-auto ${!session 
+      && "!grid-col-3"}`}>
+        <div className="col-span-2">
+          <Posts />
+        </div>
         
-          <section className="hidden xl:inline-grid" >
-            <div className="fixed top-20">
-            {session && (
-              <MiniProfile />)}
-              <div className="mt-10 ml-10 text-white pt-5">
-                <h1 className="pb-5">Recent Snaps</h1>
-                <div className="ml-2 h-40 overflow-auto scrollbar-thumb-black
-            scrollbar-thin text-white">
+        {/* Mini Profile Sidebar*/}
+
+        <section className="hidden xl:inline-grid bg-slate-800 ml-10 " >
+          <div className="fixed top-20 grid grid-col-1 divide-y">
+          {session && (
+            <MiniProfile />)}
+            <div className=" text-white pt-5">
+
+            {/* Showing all the recent snaphots */}
+
+            <section className="grid grid-col-1 divide-y">
+                <div className="h-40 overflow-auto scrollbar-thumb-black
+                  scrollbar-thin text-white grid grid-cols-1 divide-y-[1px] divide-gray-600">
                 {currPosts.map((post) => (
-                  <div key={post.id} className="flex items-center space-x-2 mb-3">
+                  <div key={post.id} className="flex items-center space-x-2">
                     <img 
-                        className="h-7 rounded-full"
+                        className="h-7 rounded-full ml-5"
                         src = {post.data().profileImg}
                         alt=""
                     />
                   <p className="flex-1 text-sm text-white">
-                      <span className="font-bold ">{post.data().caption}
+                      <span className="text-slate-400">{post.data().caption}
                       </span>{" "}
                   </p>
-                  <Moment fromNow className="pr-20 text-xs text-white">
+                  <Moment fromNow className="text-xs pr-2 text-slate-300">
                   {post.data().timeStamp?.toDate()}
                   </Moment>
-              </div>
-
-                )
-                )}
                 </div>
-                
-                
-
+                )
+              )}
               </div>
-            </div>
-            
-            
-          </section>
-        
-      </main>
-      </body>
-    )
-  }
-  
-  export default Feed
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+  )
+}
+
+export default Feed
   

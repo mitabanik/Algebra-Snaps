@@ -1,10 +1,12 @@
-import { EmojiHappyIcon, HeartIcon } from "@heroicons/react/outline"
+import { EmojiHappyIcon, HeartIcon, TrashIcon } from "@heroicons/react/outline"
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid"
-import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, serverTimestamp, setDoc, where } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, orderBy, query, serverTimestamp, setDoc, where } from "firebase/firestore"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
-import { db } from '../firebase'
+import { db } from '../../firebase'
 import Moment from 'react-moment'
+import deletePost from "./deletePost"
+import 'reactjs-popup/dist/index.css';
 
 function Post({id, uid, username, userImg, img, caption, timeStamp}) {
   const { data:session } = useSession()
@@ -12,8 +14,6 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
   const [comment,setComment] = useState("")
   const [likes,setLikes] = useState([])
   const [hasLiked, setHasLiked] = useState(false)
-
-   
 
   useEffect (() => 
   onSnapshot(query(collection(db,'posts', id, 'comments'), 
@@ -45,9 +45,13 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
       {
         username: session.user.name
       })
-  }
-}
+  }}
 
+  const sameUser = session?.user?.id === uid
+
+  const ondeletePost = () => {
+    deletePost({id})
+  }
 
   const sendComment = async (e) => {
     e.preventDefault()
@@ -56,12 +60,14 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
     setComment("");
 
     await addDoc(collection(db, 'posts', id, 'comments'),{
+    userId : session.user.id,
     comment: commentToSend,
     username: session.user.username,
     userImage: session.user.image,
     timeStamp: serverTimestamp()
   })
   }
+
   return (
   
   <div className="bg-black my-5 border rounded-lg">
@@ -69,17 +75,29 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
     <img src={userImg} className='rounded-full h-10 w-10
     object-contain border p-1' alt ="" />
     <p className="flex-1 font-bold text-white pl-3">{username}</p>
-    <p className="pr-5 text-xs text-white"> Posted <Moment fromNow >
+    <p className="flex text-xs text-white"> Posted 
+    <Moment className='pb-5 pl-1 pr-2' fromNow >
     {timeStamp?.toDate()}
-    </Moment> </p>
+    </Moment> 
+
+    {/* Deleting Posts */}
+
+    {sameUser && (
+    <TrashIcon onClick= {ondeletePost}
+    className="btn text-red-300 h-4"/>
+    )}
+    </p>
     </div>
-  
+    
     <div>
-    <img src={img} className="object-fit w-full" alt=""/>
+    <img src={img} className="object-contain w-full" alt="" />
     </div>
   {session && (
     <div className="flex justify-between px-4 pt-4">
     <div className="flex space-x-4">
+
+      {/* Likes */}
+
       {hasLiked ? (
         <HeartIconFilled 
         onClick={likePost} 
@@ -92,6 +110,8 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
     </div>
   )}
 
+  {/* Comments */}
+
   <p className="p-4 truncate text-white" >
     {likes.length > 0 && (
     <p className="font-bold mb-1">{likes.length} likes </p>
@@ -101,8 +121,8 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
   </p>
 
   {comments.length > 0 && (
-    <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black
-    scrollbar-thin">
+    <div className="ml-5 h-20 overflow-y-scroll scrollbar-thumb-black
+    scrollbar-thin pl-5">
     {comments.map((comment) => (
       <div key={comment.id} className="flex items-center space-x-2 mb-3">
       <img 
@@ -111,19 +131,29 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
       alt=""
       />
       <p className="flex-1 text-sm text-white">
-        <span className="font-bold ">{comment.data().username}
+        <span className="font-bold pr-2">{comment.data().username}
         </span>{" "}
         {comment.data().comment}
       </p>
-      <Moment fromNow className="pr-5 text-xs text-white">
+      <Moment fromNow className="text-xs text-white">
       {comment.data().timeStamp?.toDate()}
       </Moment>
+
+      {/*  Deleting comments*/}
+
+      {(comment.data().userId === session?.user?.id) && (
+        <TrashIcon className='btn h-5 pr-2'
+        onClick= {() => {
+          deleteDoc(doc(db, 'posts', id, 'comments', comment.id))
+        }
+      }/>
+      )}
       </div>
     ))}
     </div>
     )
   }
-
+  {/* Adding comments*/}
     {session && (
     <form className="flex items-center p-4">
       <EmojiHappyIcon className="h-5 stroke-white pr-4"/>
@@ -146,4 +176,4 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
     </div>
 )}
 
-  export default Post
+export default Post

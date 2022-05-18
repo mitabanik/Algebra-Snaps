@@ -1,10 +1,10 @@
 import { useRecoilState } from "recoil";
-import { modalState } from "../atoms/modalAtom";
+import { modalState } from "../../atoms/modalAtom";
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment, useRef, useState } from "react";
 import { CameraIcon } from "@heroicons/react/outline";
 import { addDoc, updateDoc, collection, doc, serverTimestamp } from '@firebase/firestore'
-import { db, storage } from '../firebase'
+import { db, storage } from '../../firebase'
 import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from '@firebase/storage'
 
@@ -24,6 +24,7 @@ function Modal() {
     // get post id for new post
     // upload to firebase storage with post id
     // get a download url from firebase storage and update post with image
+    
     const docRef = await addDoc(collection(db, 'posts'), {
       uid: session.user.id,
       username: session.user.username,
@@ -56,6 +57,8 @@ function Modal() {
         setSelectedFile(readerEvent.target.result)
         }
     }
+
+
 
     return ( 
     <Transition.Root show={open} as={Fragment}>
@@ -158,4 +161,5 @@ function Modal() {
     </Dialog>
 </Transition.Root>
 )}
+
 export default Modal
