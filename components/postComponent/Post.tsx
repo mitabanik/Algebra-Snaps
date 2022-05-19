@@ -69,7 +69,6 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
   }
 
   return (
-  
   <div className="bg-black my-5 border rounded-lg">
     <div className="flex items-center p-4 text-white">
     <img src={userImg} className='rounded-full h-10 w-10
@@ -112,11 +111,11 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
 
   {/* Comments */}
 
-  <p className="p-4 truncate text-white" >
+  <p className="p-4 text-slate-400" >
     {likes.length > 0 && (
-    <p className="font-bold mb-1">{likes.length} likes </p>
+    <p className="font-bold mb-1 text-white">{likes.length} likes </p>
     )}
-    <span className="font-bold mr-2">{username}</span>
+    <span className="font-bold mr-2 text-white">{username}</span>
     {caption}
   </p>
 

@@ -12,11 +12,10 @@ function Header() {
 
   return (
     <div className='shadow-sm border-b bg-black sticky top-0 z-50'>
-      <div className='flex justify-between max-w-6xl mx-10 p-1 lg:mx_auto'>
+      <div className='flex justify-between max-w-6xl mx-5 p-1 lg:mx_auto'>
         <div onClick={() => router.push('/')} className='relative hidden lg:inline  w-10 cursor-pointer pt-1'>
           <div className='flex justify-between'>
           <img src='../images/icon.gif' className='object-contain'/>
-          <p className='text-white font-bold pl-5'>Algebra Snaps</p>
           </div>
           
         </div>
