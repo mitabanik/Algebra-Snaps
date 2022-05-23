@@ -1,6 +1,7 @@
 import Header from '../components/header'
 import Feed from '../components/feed'
-import Modal from '../components/postComponent/Modal'
+import Modal from '../components/Modal'
+import DeletePost from '../components/postComponent/DeletePost'
 
 function Home()  {
   return (
@@ -9,6 +10,7 @@ function Home()  {
         <Header/>
         <Feed />
         <Modal />
+        <DeletePost/>
       </section>
 
     </div>

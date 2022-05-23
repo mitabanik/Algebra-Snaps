@@ -5,8 +5,10 @@ import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 import { db } from '../../firebase'
 import Moment from 'react-moment'
-import deletePost from "./deletePost"
+import DeletePost from "./DeletePost"
 import 'reactjs-popup/dist/index.css';
+import { useRecoilState } from "recoil"
+import { popupState } from "../../atoms/modalAtom"
 
 function Post({id, uid, username, userImg, img, caption, timeStamp}) {
   const { data:session } = useSession()
@@ -14,6 +16,7 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
   const [comment,setComment] = useState("")
   const [likes,setLikes] = useState([])
   const [hasLiked, setHasLiked] = useState(false)
+  const [popup,setPopup] = useRecoilState(popupState)
 
   useEffect (() => 
   onSnapshot(query(collection(db,'posts', id, 'comments'), 
@@ -50,7 +53,7 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
   const sameUser = session?.user?.id === uid
 
   const ondeletePost = () => {
-    deletePost({id})
+    setPopup(id)
   }
 
   const sendComment = async (e) => {
@@ -82,17 +85,18 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
     {/* Deleting Posts */}
 
     {sameUser && (
-    <TrashIcon onClick= {ondeletePost}
-    className="btn text-red-300 h-4"/>
-    )}
-    </p>
+      <TrashIcon onClick= {ondeletePost}
+      className="btn text-red-300 h-4">
+      </TrashIcon>
+      )}
+      </p>
     </div>
     
     <div>
-    <img src={img} className="object-contain w-full" alt="" />
-    </div>
-  {session && (
-    <div className="flex justify-between px-4 pt-4">
+      <img src={img} className="object-contain w-full" alt="" />
+      </div>
+        {session && (
+        <div className="flex justify-between px-4 pt-4">
     <div className="flex space-x-4">
 
       {/* Likes */}

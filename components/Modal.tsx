@@ -1,10 +1,10 @@
 import { useRecoilState } from "recoil";
-import { modalState } from "../../atoms/modalAtom";
+import { modalState } from "../atoms/modalAtom";
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment, useRef, useState } from "react";
 import { CameraIcon } from "@heroicons/react/outline";
 import { addDoc, updateDoc, collection, doc, serverTimestamp } from '@firebase/firestore'
-import { db, storage } from '../../firebase'
+import { db, storage } from '../firebase'
 import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from '@firebase/storage'
 
@@ -95,7 +95,7 @@ function Modal() {
               leaveFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
         
-              <div className="inline-block align-bottom bg-white rounded-lg px-4
+              <div className="inline-block align-center bg-white rounded-lg px-4
               pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8
               sm:max-w-sm sm:w-full sm:p-6">
                 <div>

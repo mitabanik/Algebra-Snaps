@@ -20,17 +20,17 @@ function Feed() {
   )
 
   return (
-    <body className="bg-white">
-    <main className= {`grid grid-cols-1 md:grid-cols-3 md:max-w-4xl 
-    xl:grid-cols-6 xl:max-w-6xl ml-auto ${!session 
+    <body className="bg-slate-500">
+    <main className= {`grid grid-cols-1 md:grid-cols-3 md:max-w-fit
+    xl:grid-cols-7 xl:max-w-screen-2xl ml-auto xl:ml-40 ${!session 
       && "!grid-col-3"}`}>
-        <div className="xl:col-start-1 xl:col-span-4 mr-10 md:col-span-2">
+        <div className="xl:col-start-1 xl:col-span-4 md:col-span-3">
           <Posts />
         </div>
         
         {/* Mini Profile Sidebar*/}
 
-        <div className="hidden xl:inline-grid md:inline-grid bg-slate-800 xl:col-start-5 xl:col-span-2 ">
+        <div className="hidden xl:inline-grid md:inline-grid bg-slate-800 xl:col-start-6 xl:col-span-2 md:col-start-3 md:col-span-2">
           <div className="fixed top-20 grid grid-col-1 divide-y">
           {session && (
             <MiniProfile />)}
@@ -38,7 +38,7 @@ function Feed() {
 
             {/* Showing all the recent snaphots */}
 
-            <section className="grid grid-col-1 divide-y">
+            <section className="hidden xl:grid xl:grid-col-1 xl:divide-y">
                 <div className="h-60 overflow-auto scrollbar-thumb-black
                   scrollbar-thin text-white grid grid-cols-1 divide-y-[1px] divide-gray-600">
                 {currPosts.map((post) => (

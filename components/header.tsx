@@ -12,8 +12,8 @@ function Header() {
 
   return (
     <div className='shadow-sm border-b bg-black sticky top-0 z-50'>
-      <div className='flex justify-between max-w-6xl mx-5 p-1 lg:mx_auto'>
-        <div onClick={() => router.push('/')} className='relative hidden lg:inline  w-10 cursor-pointer pt-1'>
+      <div className='flex justify-between xl:max-w-8xl mx-5 p-1 lg:mx_auto '>
+        <div onClick={() => router.push('/')} className='relative hidden lg:inline  w-10 cursor-pointer pt-1 '>
           <div className='flex justify-between'>
           <img src='../images/icon.gif' className='object-contain'/>
           </div>
@@ -26,10 +26,10 @@ function Header() {
         
        
         {session ? (
-        <div className='flex items-center justify-end space-x-4'>
-            <HomeIcon onClick={() => router.push('/')} className='navBtn'/>
+        <div className='flex items-center justify-end space-x-2'>
+            <HomeIcon onClick={() => router.push('/')} className='navBtn sm:inline-grid'/>
 
-            <PlusCircleIcon onClick={()=> setOpen(true)} className='navBtn'/>
+            <PlusCircleIcon onClick={()=> setOpen(true)} className='navBtn sm:inline-grid'/>
             
             <MenuIcon className='h-6 md:hidden cursor-pointer'/>
 
