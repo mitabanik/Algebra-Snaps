@@ -94,37 +94,37 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
     
     <div>
       <img src={img} className="object-contain w-full" alt="" />
-      </div>
-        {session && (
-        <div className="flex justify-between px-4 pt-4">
-    <div className="flex space-x-4">
-
-      {/* Likes */}
-
-      {hasLiked ? (
-        <HeartIconFilled 
-        onClick={likePost} 
-        className="btn text-red-500"/>
-      ) : (
-        <HeartIcon onClick={likePost} className="btn"/>
-      )
-      }
     </div>
+    {session && (
+    <div className="flex justify-between px-4 pt-4">
+      <div className="flex space-x-2">
+
+        {/* Likes */}
+
+        {hasLiked ? (
+          <HeartIconFilled 
+          onClick={likePost} 
+          className="btn text-red-500"/>
+        ) : (
+          <HeartIcon onClick={likePost} className="btn"/>
+        )
+        }
+        {likes.length > 0 && (
+        <p className="font-xs text-white">{likes.length} </p>
+        )}
+      </div>
     </div>
   )}
 
-  {/* Comments */}
-
   <p className="p-4 text-slate-400" >
-    {likes.length > 0 && (
-    <p className="font-bold mb-1 text-white">{likes.length} likes </p>
-    )}
     <span className="font-bold mr-2 text-white">{username}</span>
     {caption}
   </p>
 
+  {/* Comments */}
+
   {comments.length > 0 && (
-    <div className="ml-5 h-20 overflow-y-scroll scrollbar-thumb-black
+    <div className="ml-5 h-15 overflow-y-scroll scrollbar-thumb-black
     scrollbar-thin pl-5">
     {comments.map((comment) => (
       <div key={comment.id} className="flex items-center space-x-2 mb-3">
@@ -157,6 +157,7 @@ function Post({id, uid, username, userImg, img, caption, timeStamp}) {
     )
   }
   {/* Adding comments*/}
+
     {session && (
     <form className="flex items-center p-4">
       <EmojiHappyIcon className="h-5 stroke-white pr-4"/>
